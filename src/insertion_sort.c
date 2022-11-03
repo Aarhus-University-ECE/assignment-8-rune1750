@@ -13,7 +13,7 @@ void sort(linked_list *llPtr)
     node_t *place = llPtr->head;
 
     // Only runs the sorter if the list is not empty
-    assert(llPtr->head == NULL);
+    assert(llPtr->head != NULL);
 
     // runs untill last node == NULL
     while (last->next != NULL)
@@ -24,6 +24,7 @@ void sort(linked_list *llPtr)
             holder = current;
             holder_next = current->next;
             last->next = current->next;
+
             // Looks for a previous node which has data smaller than the current node
             while (place->next->data < holder->data)
             {
@@ -40,8 +41,8 @@ void sort(linked_list *llPtr)
                 place->next = holder;
             }
         }
+        // sorting starts over, but now with current as the next unsorted element. 
+        last = current;
+        current = last->next;
     }
-    // sorting starts over, but with top element as the node with the smallest data found
-    last = current;
-    current = last->next;
 }

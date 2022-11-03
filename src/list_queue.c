@@ -19,19 +19,18 @@ int empty(queue *q)
     q->rear = NULL;
     printf("\nThe queue has been left abandoned... T_T");
     return 1;
+    // que size reset
+    q->size = 0;
   }
   else
   {
-    printf("\n There is something in this queue! ^_^");
+    printf("\nThere is something in this queue! ^_^");
     return 0;
   }
-  // que size reset
-  q->size = 0;
 }
 
 void enqueue(queue *q, int x)
 {
-
   struct qnode *element = malloc(sizeof(qnode));
   element->data = x;
   element->next = NULL;
@@ -55,8 +54,9 @@ void enqueue(queue *q, int x)
 int dequeue(queue *q)
 {
   struct qnode *holder;
+  int x; 
   // If the first place in the queue is empty, the program will print this.
-  if (q->front = NULL)
+  if (q->front == NULL)
   {
     printf("I dont have anything, leave me alone!");
   }
@@ -65,8 +65,10 @@ int dequeue(queue *q)
     // Front of the queue becomes the second element. qnode "holder" extracts information from queue.
     holder = q->front;
     q->front = q->front->next;
+    // size of the queue is adjusted.
+    x = holder->data; 
+    free(holder); 
+    q->size--;
   }
-  // size of the queue is adjusted.
-  q->size--;
-  return holder->data; 
+  return x;
 }

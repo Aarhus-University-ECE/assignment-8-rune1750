@@ -10,7 +10,7 @@ add_library(mymath src/insertion_sort.c src/linked_list.c src/list_queue.c)
 target_include_directories(mymath PUBLIC include)
 
 # define executable named main for experimenting and debugging code
-add_executable(main src/main.cpp)
+add_executable(main src/main.c)
 target_link_libraries(main mymath)
 
 # tests are added by declaring a target, in this case 'tests'. additional tests
